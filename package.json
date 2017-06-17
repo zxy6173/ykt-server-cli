@@ -1,0 +1,25 @@
+{
+  "name": "ykt-server-cli",
+  "version": "0.1.2",
+  "description": "node server",
+  "author": {
+    "name": "BDK",
+    "email": "whoasbdk@126.com"
+  },
+  "bin": {
+    "server": "./bin/server-cli"
+  },
+  "main": "bin/server-cli",
+  "scripts": {
+    "server": "node bin/server-cli"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "readline-sync": "^1.4.7"
+  },
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/zxy6173/server-cli.git"
+  }
+}
