@@ -5,15 +5,15 @@
   "scripts": {
     "start": "node ./bin/www"
   },
-  "port": "3000",
+  "port": "8080",
   "db":{
     "url":"mongodb://127.0.0.1:27017",
-    "dbname":"student"
+    "dbname":"front"
   },
   "dependencies": {
     "body-parser": "~1.15.2",
     "express": "~4.14.0",
-    "mongodb": "^2.2.27",
+    "ykt-mongo": "^1.0.4",
     "multiparty": "^4.1.3"
   }
 }
