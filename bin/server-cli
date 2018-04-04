@@ -1,21 +1,21 @@
 #!/usr/bin/env node
 
-var fs = require("fs");
-var path = require("path");
+const fs = require("fs");
+const path = require("path");
 
-var copy = function(src,dest) {
+const copy = function(src,dest) {
 
-    var file = fs.createReadStream(src);
-    var out = fs.createWriteStream(dest);
+    let file = fs.createReadStream(src);
+    let out = fs.createWriteStream(dest);
     file.on('data', function(data) {
         out.write(data);
     });
 }
 
 
-var listFiles = function(dir,destDir) {
-        var stat = fs.statSync(dir);
-        var destPath = destDir + "/" +path.basename(dir);
+const listFiles = function(dir,destDir) {
+        let stat = fs.statSync(dir);
+        let destPath = destDir + "/" +path.basename(dir);
         if(stat && stat.isDirectory()){
 
             if(fs.existsSync(destPath)){
@@ -26,7 +26,7 @@ var listFiles = function(dir,destDir) {
             fs.mkdirSync(destPath);
             console.log("create "+destPath+" success");
             fs.readdirSync(dir).forEach(function(filename){
-                var path = dir + "/"+filename;
+                let path = dir + "/"+filename;
                 listFiles(path,destPath);
             });
         }else{
@@ -34,17 +34,25 @@ var listFiles = function(dir,destDir) {
         }
 }
 
-var main = function(){
-    var readlineSync = require('readline-sync');
-    var isCreate = readlineSync.question('Are you sure create a server project?[y/N]');
-    if(isCreate.toLowerCase() == "y"){
-        listFiles(path.join(__dirname,"../lib/server"),path.resolve());
-        console.log();
-        console.log("       How to run this server:");
-        console.log();
-        console.log("           1. npm install");
-        console.log("           2. npm start");
-        console.log();
+const main = function(){
+    let readlineSync = require('readline-sync');
+    let which = readlineSync.question('Please choose databse?[mongo/mysql]');
+    
+    if(which == "mongo"){
+        listFiles(path.join(__dirname,"../lib/server_mongo"),path.resolve());
+    }else if(which == "mysql"){
+        listFiles(path.join(__dirname,"../lib/server_mysql"),path.resolve());
+    }else{
+        console.log("Fail:Input error Or Choose a non-existent");
+        return;
     }
+    console.log();
+    console.log("       How to run this server:");
+    console.log();
+    console.log("           1. cd server-mongo or cd server-mysql");
+    console.log("           2. npm install"); 
+    console.log("           3. npm start");
+    console.log();
+    
 }
 main();

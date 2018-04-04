@@ -17,12 +17,12 @@ npm install -g ykt-server-cli
 ```
 server
 ```
-*该命令会在当前目录下生成一个nodejs服务器的目录，名字为server。注意，如果该目录下已有该名称的目录或文件，则无法生成，需要先将该名称的目录或文件删除，也可以换一个其他目录再执行server命令。*
+*执行该命令后，选择连接的数据库，目前提供mongodb和mysql数据库。选择后会在当前目录下生成一个nodejs服务器的目录，名字为server_mongo或server_mysql。注意，如果该目录下已有该名称的目录或文件，则无法生成，需要先将该名称的目录或文件删除，也可以换一个其他目录再执行server命令。*
 
 * 进入目录，下载依赖的插件
 
 ```
-cd server
+cd server_mongo 或 cd server_mysql
 npm install
 ```
 
@@ -43,11 +43,10 @@ npm start
 
 * 修改数据库连接配置
 
-该服务器项目所使用的数据库为mongodb。该数据库请自行安装。
+根据选择连接的数据库，请自行安装。
 
 打开package.json文件，修改db属性。
 其中url指连接数据库的ip和端口。
-dbname指连接的数据库名。
 
 ## api
 
