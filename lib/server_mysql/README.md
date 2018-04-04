@@ -46,7 +46,6 @@ npm start
 根据选择连接的数据库，请自行安装。
 
 打开package.json文件，修改db属性。
-其中url指连接数据库的ip和端口。
 
 ## api
 
